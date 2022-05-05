@@ -9,4 +9,24 @@
     <string name="_2">2</string>
     <string name="_3">3</string>
     <string name="_0">0</string>
+    <string name="result">Result :</string>
+    <string name="stack_size">Stack size</string>
+    <string name="input">Input:</string>
+    <string name="ac">AC</string>
+    <string name="swap">SWAP</string>
+    <string name="drop">DROP</string>
+    <string name="_8">8</string>
+    <string name="divideButtonText">/</string>
+    <string name="changeMark">+/-</string>
+    <string name="multiplicationButton">*</string>
+    <string name="sqrtButton">√</string>
+    <string name="subtractButton">-</string>
+    <string name="powerButton">^</string>
+    <string name="dotButton">.</string>
+    <string name="enterButton">Enter</string>
+    <string name="addButton">+</string>
+    <string name="fourthRowStack">4:</string>
+    <string name="thirdRowStack">3:</string>
+    <string name="secondRowStack">2:</string>
+    <string name="firstRowStack">1:</string>
 </resources>

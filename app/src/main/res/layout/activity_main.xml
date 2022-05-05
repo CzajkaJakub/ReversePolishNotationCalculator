@@ -7,366 +7,347 @@
     tools:context=".MainActivity">
 
 
-    <TableLayout
-        android:id="@+id/tableLayout3"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/resultLabel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/result" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:srcCompat="@drawable/settingIcon" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/firstRowStack" />
+
+        <TextView
+            android:id="@+id/second"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/secondRowStack" />
+
+        <TextView
+            android:id="@+id/third"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/thirdRowStack" />
+
+        <TextView
+            android:id="@+id/fourth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fourthRowStack" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/stackSizeField"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/stack_size" />
+
+            <TextView
+                android:id="@+id/inputField"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/input" />
+        </LinearLayout>
+
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            >
 
-            <TableLayout
+
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <TableRow
+                <Button
+                    android:id="@+id/buttonAc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/ac"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"/>
 
-                    <TextView
-                        android:id="@+id/resultLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/_0" />
-                </TableRow>
 
-                <TableRow
+                <Button
+                    android:id="@+id/buttonSwap"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/swap"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"/>
 
-                    <TextView
-                        android:id="@+id/first"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="1:" />
-                </TableRow>
-
-                <TableRow
+                <Button
+                    android:id="@+id/buttonDrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/drop"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"/>
+            </TableRow>
 
-                    <TextView
-                        android:id="@+id/second"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2:" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/third"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="3:" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/fourth"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="4:" />
-                </TableRow>
-
-            </TableLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TableLayout
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_weight="1">
 
-
-                <TableRow
+                <Button
+                    android:id="@+id/button7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_7"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"/>
 
-                    <Button
-                        android:id="@+id/button7"
-
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_7"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/button8"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="8"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/button9"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_9"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/buttonDiv"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="/"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/buttonDrop"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="DROP"
-                        android:textColor="#FFFFFF" />
-                </TableRow>
-
-                <TableRow
+                <Button
+                    android:id="@+id/button8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_8"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"/>
 
-                    <Button
-                        android:id="@+id/button4"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_4"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/button5"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_5"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/button6"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_6"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/buttonSub"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="*"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/buttonSwap"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="SWAP"
-                        android:textColor="#FFFFFF" />
-                </TableRow>
-
-                <TableRow
+                <Button
+                    android:id="@+id/button9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_9"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"/>
 
-                    <Button
-                        android:id="@+id/button1"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_1"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/button2"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_2"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/button3"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_3"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/buttonMinus"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="-"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/buttonPower"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="^"
-                        android:textColor="#FFFFFF" />
-
-                    <Button
-                        android:id="@+id/buttonSqrt"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="√"
-                        android:textColor="#FFFFFF" />
-                </TableRow>
-
-                <TableRow
+                <Button
+                    android:id="@+id/buttonDiv"
                     android:layout_width="match_parent"
-                    android:layout_height="207dp"
-                    android:layout_weight="1">
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/divideButtonText"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"/>
 
-                    <Button
-                        android:id="@+id/button0"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="@string/_0"
-                        android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/buttonChangeCharacter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/changeMark"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button" />
 
-                    <Button
-                        android:id="@+id/buttonDot"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="."
-                        android:textColor="#FFFFFF" />
+            </TableRow>
 
-                    <Button
-                        android:id="@+id/buttonEnter"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="Enter"
-                        android:textColor="#FFFFFF" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-                    <Button
-                        android:id="@+id/buttonPlus"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="+"
-                        android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_4"
+                    android:textColor="#FFFFFF"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button" />
 
-                    <Button
-                        android:id="@+id/buttonAc"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#000000"
-                        android:text="AC"
-                        android:textColor="#FFFFFF" />
-                </TableRow>
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_5"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button" />
 
-            </TableLayout>
-        </TableRow>
-    </TableLayout>
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_6"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+                <Button
+                    android:id="@+id/buttonSub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/multiplicationButton"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+                <Button
+                    android:id="@+id/buttonSqrt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/sqrtButton"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_1"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_2"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_3"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+                <Button
+                    android:id="@+id/buttonMinus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/subtractButton"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button" />
+
+                <Button
+                    android:id="@+id/buttonPower"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/powerButton"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="207dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/button0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/_0"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+                <Button
+                    android:id="@+id/buttonDot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/dotButton"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button" />
+
+                <Button
+                    android:id="@+id/buttonEnter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/enterButton"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button"  />
+
+                <Button
+                    android:id="@+id/buttonPlus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/addButton"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/rounded_button" />
+
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
