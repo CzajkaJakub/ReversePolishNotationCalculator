@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -24,8 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/resultLabel"
@@ -35,10 +35,10 @@
                 android:text="@string/result" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/settingsButton"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                app:srcCompat="@drawable/settingIcon" />
+                app:srcCompat="@drawable/sett" />
         </LinearLayout>
 
         <TextView
@@ -87,8 +87,7 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
 
             <TableRow
@@ -102,9 +101,9 @@
                     android:layout_height="match_parent"
                     android:layout_margin="6dp"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/black"
                     android:text="@string/ac"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"/>
+                    app:backgroundTint="@null" />
 
 
                 <Button
@@ -114,8 +113,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/swap"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"/>
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonDrop"
@@ -124,8 +122,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/drop"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"/>
+                    app:backgroundTint="@null" />
             </TableRow>
 
             <TableRow
@@ -140,8 +137,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_7"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"/>
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/button8"
@@ -150,8 +146,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_8"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"/>
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/button9"
@@ -160,8 +155,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_9"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"/>
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonDiv"
@@ -170,8 +164,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/divideButtonText"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"/>
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonChangeCharacter"
@@ -180,8 +173,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/changeMark"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button" />
+                    app:backgroundTint="@null" />
 
             </TableRow>
 
@@ -198,8 +190,7 @@
                     android:layout_weight="1"
                     android:text="@string/_4"
                     android:textColor="#FFFFFF"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button" />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/button5"
@@ -208,8 +199,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_5"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button" />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/button6"
@@ -218,8 +208,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_6"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonSub"
@@ -228,8 +217,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/multiplicationButton"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonSqrt"
@@ -238,8 +226,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/sqrtButton"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
             </TableRow>
 
@@ -255,8 +242,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_1"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/button2"
@@ -265,8 +251,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_2"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/button3"
@@ -275,8 +260,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_3"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonMinus"
@@ -285,8 +269,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/subtractButton"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button" />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonPower"
@@ -295,8 +278,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/powerButton"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
             </TableRow>
 
@@ -312,8 +294,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/_0"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonDot"
@@ -322,8 +303,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/dotButton"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button" />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonEnter"
@@ -332,8 +312,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/enterButton"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button"  />
+                    app:backgroundTint="@null" />
 
                 <Button
                     android:id="@+id/buttonPlus"
@@ -342,8 +321,7 @@
                     android:layout_margin="6dp"
                     android:layout_weight="1"
                     android:text="@string/addButton"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/rounded_button" />
+                    app:backgroundTint="@null" />
 
             </TableRow>
 

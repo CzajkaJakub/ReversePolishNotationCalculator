@@ -29,4 +29,8 @@
     <string name="thirdRowStack">3:</string>
     <string name="secondRowStack">2:</string>
     <string name="firstRowStack">1:</string>
+    <string name="change_background_color">Change background color</string>
+    <string name="back_to_main">Back to main</string>
+    <string name="change_buttons_color">Change buttons color</string>
+    <string name="change_text_color">Change text color</string>
 </resources>

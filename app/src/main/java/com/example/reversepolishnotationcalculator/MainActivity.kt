@@ -1,5 +1,6 @@
 package com.example.reversepolishnotationcalculator
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        settingsButton.setOnClickListener{ startActivity(Intent(this, SettingsActivity::class.java))}
+        refreshColors()
 
         button0.setOnClickListener{ input += 0; reloadLabels(stack, result, input) }
         button1.setOnClickListener{ input += 1; reloadLabels(stack, result, input) }
@@ -136,6 +140,73 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun refreshColors() {
+        val extras = intent.extras ?: return
+        val backgroundColor = extras.getInt("BackgroundColor")
+        val textColor = extras.getInt("TextColor")
+        val buttonColor = extras.getInt("ButtonColor")
+
+        changeBackgroundColor(backgroundColor)
+        changeButtonColors(buttonColor)
+        changeTextColors(textColor)
+    }
+
+    private fun changeBackgroundColor(backgroundColor: Int) {
+        mainLayout.setBackgroundColor(backgroundColor)
+    }
+
+    private fun changeTextColors(textColor: Int) {
+        buttonAc.setTextColor(textColor)
+        buttonSwap.setTextColor(textColor)
+        buttonDrop.setTextColor(textColor)
+        button0.setTextColor(textColor)
+        button1.setTextColor(textColor)
+        button2.setTextColor(textColor)
+        button3.setTextColor(textColor)
+        button4.setTextColor(textColor)
+        button5.setTextColor(textColor)
+        button6.setTextColor(textColor)
+        button7.setTextColor(textColor)
+        button8.setTextColor(textColor)
+        button9.setTextColor(textColor)
+        buttonDiv.setTextColor(textColor)
+        buttonDot.setTextColor(textColor)
+        buttonChangeCharacter.setTextColor(textColor)
+        buttonMinus.setTextColor(textColor)
+        buttonPlus.setTextColor(textColor)
+        buttonEnter.setTextColor(textColor)
+        buttonSqrt.setTextColor(textColor)
+        buttonPower.setTextColor(textColor)
+        buttonSub.setTextColor(textColor)
+    }
+
+    private fun changeButtonColors(buttonColor: Int) {
+        buttonAc.setBackgroundColor(buttonColor)
+        buttonSwap.setBackgroundColor(buttonColor)
+        buttonDrop.setBackgroundColor(buttonColor)
+        button0.setBackgroundColor(buttonColor)
+        button1.setBackgroundColor(buttonColor)
+        button2.setBackgroundColor(buttonColor)
+        button3.setBackgroundColor(buttonColor)
+        button4.setBackgroundColor(buttonColor)
+        button5.setBackgroundColor(buttonColor)
+        button6.setBackgroundColor(buttonColor)
+        button7.setBackgroundColor(buttonColor)
+        button8.setBackgroundColor(buttonColor)
+        button9.setBackgroundColor(buttonColor)
+        buttonDiv.setBackgroundColor(buttonColor)
+        buttonDot.setBackgroundColor(buttonColor)
+        buttonChangeCharacter.setBackgroundColor(buttonColor)
+        buttonMinus.setBackgroundColor(buttonColor)
+        buttonPlus.setBackgroundColor(buttonColor)
+        buttonEnter.setBackgroundColor(buttonColor)
+        buttonSqrt.setBackgroundColor(buttonColor)
+        buttonPower.setBackgroundColor(buttonColor)
+        buttonSub.setBackgroundColor(buttonColor)
+
+    }
+
+
     private fun reloadLabels(stack: LinkedList<Double>, result: Double, input: String) {
         var (firstLabelTextValue, secondLabelTextValue, thirdLabelTextValue, fourthLabelTextValue) = listOf("1: ", "2: ", "3: ", "4: ")
         val (resultFieldTextValue, inputFieldTextValue, stackFieldTextValue, stackSizeFieldTextValue) = listOf("Result : ", "Input : ", "Stack : ", "Stack size : ")
@@ -152,7 +223,7 @@ class MainActivity : AppCompatActivity() {
             third.text = thirdLabelTextValue
             fourth.text = fourthLabelTextValue
             stackSizeField.text = stackSizeFieldTextValue.plus(stack.size.toString())
-            stackField.text = stackFieldTextValue.plus(stack.toString().substring(1, stack.toString().length - 1))
+    //        stackField.text = stackFieldTextValue.plus(stack.toString().substring(1, stack.toString().length - 1))
             resultLabel.text = resultFieldTextValue.plus(result.toString())
             inputField.text = inputFieldTextValue.plus(input)
         }
