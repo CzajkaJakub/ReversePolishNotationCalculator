@@ -1,13 +1,14 @@
 package com.example.reversepolishnotationcalculator
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.TextView
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import kotlinx.android.synthetic.main.activity_settings.*
+import kotlinx.android.synthetic.main.settings_activity.*
 import yuku.ambilwarna.AmbilWarnaDialog
 import java.io.File
 
@@ -18,7 +19,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val settings: Settings = readSettingsFromFile()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(R.layout.settings_activity)
         setButtonsListeners(settings)
         loadColors(settings)
     }
@@ -28,6 +29,7 @@ class SettingsActivity : AppCompatActivity() {
         backgroundColorPicker.setOnClickListener{ openColorPicker(ColorType.Background, settings) }
         buttonsColorPicker.setOnClickListener{ openColorPicker(ColorType.Buttons, settings) }
         textColorPicker.setOnClickListener{ openColorPicker(ColorType.Text, settings) }
+        defaultSettingsButton.setOnClickListener{ setDefaultColors(settings); loadColors(settings)}
 
         accuracySlider.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(bar: SeekBar?, value: Int, p2: Boolean) {
@@ -43,6 +45,12 @@ class SettingsActivity : AppCompatActivity() {
             val intent = Intent(this, CalculatorView::class.java)
             saveSettingsInFile(settings)
             startActivity(intent)}
+    }
+
+    private fun setDefaultColors(settings: Settings) {
+        settings.textColor = Color.WHITE
+        settings.backgroundColor = Color.BLACK
+        settings.buttonColor = Color.BLUE
     }
 
     private fun readSettingsFromFile(): Settings {
@@ -75,14 +83,10 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun loadColors(settings: Settings) {
+        val buttons: List<TextView> = listOf<TextView>(backToMainButton, backgroundColorPicker, textColorPicker, buttonsColorPicker, defaultSettingsButton)
+        fun paintButtons(element: TextView) = element.setBackgroundColor(settings.buttonColor)
+        fun paintText(element: TextView) = element.setTextColor(settings.textColor)
+        buttons.forEach{paintButtons(it); paintText(it)}
         backgroundSettingsLayout.setBackgroundColor(settings.backgroundColor)
-        backToMainButton.setBackgroundColor(settings.buttonColor)
-        backgroundColorPicker.setBackgroundColor(settings.buttonColor)
-        textColorPicker.setBackgroundColor(settings.buttonColor)
-        buttonsColorPicker.setBackgroundColor(settings.buttonColor)
-        backToMainButton.setTextColor(settings.textColor)
-        backgroundColorPicker.setTextColor(settings.textColor)
-        textColorPicker.setTextColor(settings.textColor)
-        buttonsColorPicker.setTextColor(settings.textColor)
     }
 }

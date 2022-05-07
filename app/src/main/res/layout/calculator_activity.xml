@@ -31,14 +31,14 @@
                 android:id="@+id/resultLabel"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/result" />
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/settingsButton"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                app:srcCompat="@drawable/sett" />
+                android:layout_width="68dp"
+                android:layout_height="79dp"
+                android:contentDescription="@string/settingsString"
+                app:srcCompat="@mipmap/settings_icon_foreground" />
         </LinearLayout>
 
         <TextView
@@ -74,8 +74,7 @@
                 android:id="@+id/stackSizeField"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/stack_size" />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/inputField"
@@ -210,7 +209,7 @@
                     app:backgroundTint="@null" />
 
                 <Button
-                    android:id="@+id/buttonSub"
+                    android:id="@+id/buttonMultiplication"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="6dp"

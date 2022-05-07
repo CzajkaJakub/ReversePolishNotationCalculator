@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.calculator_activity.*
 import java.io.File
 import java.lang.Exception
 import java.util.*
@@ -20,13 +20,13 @@ class CalculatorView : AppCompatActivity() {
     private val mapper = jacksonObjectMapper()
     private var settings: Settings? = null
     private val stack: LinkedList<Double> = LinkedList()
-    var result = 0.0
-    var input = ""
+    private var result = 0.0
+    private var input = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         settings = readSettingsFromFile()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.calculator_activity)
         setButtonsListeners()
         setBackgroundColor(settings!!.backgroundColor)
         setButtonColor(settings!!.buttonColor)
@@ -40,8 +40,6 @@ class CalculatorView : AppCompatActivity() {
 
     private fun setButtonsListeners() {
         settingsButton.setOnClickListener{ startActivity(Intent(this, SettingsActivity::class.java))}
-
-
         button0.setOnClickListener{ input += 0; reloadLabels(stack, result, input) }
         button1.setOnClickListener{ input += 1; reloadLabels(stack, result, input) }
         button2.setOnClickListener{ input += 2; reloadLabels(stack, result, input) }
@@ -52,18 +50,20 @@ class CalculatorView : AppCompatActivity() {
         button7.setOnClickListener{ input += 7; reloadLabels(stack, result, input) }
         button8.setOnClickListener{ input += 8; reloadLabels(stack, result, input) }
         button9.setOnClickListener{ input += 9; reloadLabels(stack, result, input) }
-        buttonDot.setOnClickListener{ input += "."; reloadLabels(stack, result, input) }
-
-
+        buttonDot.setOnClickListener{
+            when(input){
+                "" -> input += "0."
+                else -> if (!input.contains(".")){input += ".";}
+            }
+            reloadLabels(stack, result, input) }
         buttonPlus.setOnClickListener{
-            val dod = stack.peekFirst()
-            if( dod != null) {
-                result += dod
+            val value = stack.peekFirst()
+            if( value != null) {
+                result += value
                 stack.remove()
                 reloadLabels(stack, result, input)
             }
         }
-
         buttonMinus.setOnClickListener{
             val dod = stack.peekFirst()
             if( dod != null) {
@@ -72,8 +72,7 @@ class CalculatorView : AppCompatActivity() {
                 reloadLabels(stack, result, input)
             }
         }
-
-        buttonSub.setOnClickListener{
+        buttonMultiplication.setOnClickListener{
             val dod = stack.peekFirst()
             if( dod != null) {
                 result *= dod
@@ -81,7 +80,6 @@ class CalculatorView : AppCompatActivity() {
                 reloadLabels(stack, result, input)
             }
         }
-
         buttonDiv.setOnClickListener{
             val dod = stack.peekFirst()
             if( dod != null) {
@@ -90,7 +88,6 @@ class CalculatorView : AppCompatActivity() {
                 reloadLabels(stack, result, input)
             }
         }
-
         buttonDrop.setOnClickListener{
             val dod = stack.peekFirst()
             if( dod != null) {
@@ -98,7 +95,6 @@ class CalculatorView : AppCompatActivity() {
                 reloadLabels(stack, result, input)
             }
         }
-
         buttonPower.setOnClickListener{
             val dod = stack.peekFirst()
             if( dod != null) {
@@ -107,12 +103,10 @@ class CalculatorView : AppCompatActivity() {
                 reloadLabels(stack, result, input)
             }
         }
-
         buttonSqrt.setOnClickListener{
             result = sqrt(result)
             reloadLabels(stack, result, input)
         }
-
         buttonSwap.setOnClickListener{
             try{
                 val val1 = stack[0]
@@ -124,25 +118,18 @@ class CalculatorView : AppCompatActivity() {
                 reloadLabels(stack, result, input)
             }catch (e: Exception){}
         }
-
         buttonAc.setOnClickListener{
             stack.clear()
             result = 0.0
             input = ""
             reloadLabels(stack, result, input)
         }
-
         buttonChangeCharacter.setOnClickListener{
             val newValue = -stack[0]
             stack.remove()
             stack.add(0, newValue)
             reloadLabels(stack, result, input)
         }
-
-
-
-
-
         buttonEnter.setOnClickListener{
             try{
                 val inputNumber = input.toDouble()
@@ -160,7 +147,7 @@ class CalculatorView : AppCompatActivity() {
         val elements: List<TextView> = listOf<TextView>(buttonAc, buttonSwap, buttonDrop, button0, button1, button2, button3, inputField,
                                               button4, button5, button6, button7, button8, button9, buttonDiv, resultLabel,
                                               buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter,
-                                              buttonSqrt, buttonPower, buttonSub, firstStackLabel, secondStackLabel, thirdStackLabel, fourthStackLabel, stackSizeField)
+                                              buttonSqrt, buttonPower, buttonMultiplication, firstStackLabel, secondStackLabel, thirdStackLabel, fourthStackLabel, stackSizeField)
         fun colorElement(element: TextView) = element.setTextColor(textColor)
         elements.forEach{colorElement(it)}
     }
@@ -169,7 +156,7 @@ class CalculatorView : AppCompatActivity() {
         val elements: List<Button> = listOf<Button>(buttonAc, buttonSwap, buttonDrop, button0, button1, button2, button3,
             button4, button5, button6, button7, button8, button9, buttonDiv,
             buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter,
-            buttonSqrt, buttonPower, buttonSub)
+            buttonSqrt, buttonPower, buttonMultiplication)
         fun colorElement(element: Button) = element.setBackgroundColor(buttonColor)
         elements.forEach{colorElement(it)}
     }
