@@ -1,34 +1,46 @@
 package com.example.reversepolishnotationcalculator
 
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
+import android.widget.Button
+import android.widget.TextView
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 import java.lang.Exception
 import java.util.*
 import kotlin.math.pow
+import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 class CalculatorView : AppCompatActivity() {
 
-    val tag = "StateChanged"
+    private val mapper = jacksonObjectMapper()
+    private var settings: Settings? = null
+    private val stack: LinkedList<Double> = LinkedList()
+    var result = 0.0
+    var input = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        Log.i(tag, "onCreate")
-
-        val stack: LinkedList<Double> = LinkedList()
-        var result = 0.0
-        var input = ""
-
+        settings = readSettingsFromFile()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setButtonsListeners()
+        setBackgroundColor(settings!!.backgroundColor)
+        setButtonColor(settings!!.buttonColor)
+        changeTextColor(settings!!.textColor)
+    }
 
+    private fun readSettingsFromFile(): Settings {
+        val path = this.filesDir.toString().plus("/colors.json")
+        return mapper.readValue(File(path))
+    }
+
+    private fun setButtonsListeners() {
         settingsButton.setOnClickListener{ startActivity(Intent(this, SettingsActivity::class.java))}
-        refreshColors()
+
 
         button0.setOnClickListener{ input += 0; reloadLabels(stack, result, input) }
         button1.setOnClickListener{ input += 1; reloadLabels(stack, result, input) }
@@ -140,91 +152,46 @@ class CalculatorView : AppCompatActivity() {
         }
     }
 
-    private fun refreshColors() {
-        val extras = intent.extras ?: return
-        val backgroundColor = extras.getInt("BackgroundColor")
-        val textColor = extras.getInt("TextColor")
-        val buttonColor = extras.getInt("ButtonColor")
-
-        changeBackgroundColor(backgroundColor)
-        changeButtonColors(buttonColor)
-        changeTextColors(textColor)
+    private fun setBackgroundColor(backgroundColor: Int) {
+        calculatorBackground.setBackgroundColor(backgroundColor)
     }
 
-    private fun changeBackgroundColor(backgroundColor: Int) {
-        mainLayout.setBackgroundColor(backgroundColor)
+    private fun changeTextColor(textColor: Int) {
+        val elements: List<TextView> = listOf<TextView>(buttonAc, buttonSwap, buttonDrop, button0, button1, button2, button3, inputField,
+                                              button4, button5, button6, button7, button8, button9, buttonDiv, resultLabel,
+                                              buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter,
+                                              buttonSqrt, buttonPower, buttonSub, firstStackLabel, secondStackLabel, thirdStackLabel, fourthStackLabel, stackSizeField)
+        fun colorElement(element: TextView) = element.setTextColor(textColor)
+        elements.forEach{colorElement(it)}
     }
 
-    private fun changeTextColors(textColor: Int) {
-        buttonAc.setTextColor(textColor)
-        buttonSwap.setTextColor(textColor)
-        buttonDrop.setTextColor(textColor)
-        button0.setTextColor(textColor)
-        button1.setTextColor(textColor)
-        button2.setTextColor(textColor)
-        button3.setTextColor(textColor)
-        button4.setTextColor(textColor)
-        button5.setTextColor(textColor)
-        button6.setTextColor(textColor)
-        button7.setTextColor(textColor)
-        button8.setTextColor(textColor)
-        button9.setTextColor(textColor)
-        buttonDiv.setTextColor(textColor)
-        buttonDot.setTextColor(textColor)
-        buttonChangeCharacter.setTextColor(textColor)
-        buttonMinus.setTextColor(textColor)
-        buttonPlus.setTextColor(textColor)
-        buttonEnter.setTextColor(textColor)
-        buttonSqrt.setTextColor(textColor)
-        buttonPower.setTextColor(textColor)
-        buttonSub.setTextColor(textColor)
+    private fun setButtonColor(buttonColor: Int) {
+        val elements: List<Button> = listOf<Button>(buttonAc, buttonSwap, buttonDrop, button0, button1, button2, button3,
+            button4, button5, button6, button7, button8, button9, buttonDiv,
+            buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter,
+            buttonSqrt, buttonPower, buttonSub)
+        fun colorElement(element: Button) = element.setBackgroundColor(buttonColor)
+        elements.forEach{colorElement(it)}
     }
-
-    private fun changeButtonColors(buttonColor: Int) {
-        buttonAc.setBackgroundColor(buttonColor)
-        buttonSwap.setBackgroundColor(buttonColor)
-        buttonDrop.setBackgroundColor(buttonColor)
-        button0.setBackgroundColor(buttonColor)
-        button1.setBackgroundColor(buttonColor)
-        button2.setBackgroundColor(buttonColor)
-        button3.setBackgroundColor(buttonColor)
-        button4.setBackgroundColor(buttonColor)
-        button5.setBackgroundColor(buttonColor)
-        button6.setBackgroundColor(buttonColor)
-        button7.setBackgroundColor(buttonColor)
-        button8.setBackgroundColor(buttonColor)
-        button9.setBackgroundColor(buttonColor)
-        buttonDiv.setBackgroundColor(buttonColor)
-        buttonDot.setBackgroundColor(buttonColor)
-        buttonChangeCharacter.setBackgroundColor(buttonColor)
-        buttonMinus.setBackgroundColor(buttonColor)
-        buttonPlus.setBackgroundColor(buttonColor)
-        buttonEnter.setBackgroundColor(buttonColor)
-        buttonSqrt.setBackgroundColor(buttonColor)
-        buttonPower.setBackgroundColor(buttonColor)
-        buttonSub.setBackgroundColor(buttonColor)
-
-    }
-
 
     private fun reloadLabels(stack: LinkedList<Double>, result: Double, input: String) {
         var (firstLabelTextValue, secondLabelTextValue, thirdLabelTextValue, fourthLabelTextValue) = listOf("1: ", "2: ", "3: ", "4: ")
-        val (resultFieldTextValue, inputFieldTextValue, stackFieldTextValue, stackSizeFieldTextValue) = listOf("Result : ", "Input : ", "Stack : ", "Stack size : ")
+        val (resultFieldTextValue, inputFieldTextValue, stackSizeFieldTextValue) = listOf("Result : ", "Input : ", "Stack size : ")
+        fun round(x : Double) = ((x * (10.0).pow(settings!!.accuracy.toDouble())).roundToInt()) / ((10.0).pow(settings!!.accuracy.toDouble()))
         try {
-            firstLabelTextValue += stack[0].toString()
-            secondLabelTextValue += stack[1].toString()
-            thirdLabelTextValue += stack[2].toString()
-            fourthLabelTextValue += stack[3].toString()
+            firstLabelTextValue += round(stack[0]).toString()
+            secondLabelTextValue += round(stack[1]).toString()
+            thirdLabelTextValue += round(stack[2]).toString()
+            fourthLabelTextValue += round(stack[3]).toString()
 
         } catch (e: Exception){}
         finally {
-            first.text = firstLabelTextValue
-            second.text = secondLabelTextValue
-            third.text = thirdLabelTextValue
-            fourth.text = fourthLabelTextValue
+            firstStackLabel.text = firstLabelTextValue
+            secondStackLabel.text = secondLabelTextValue
+            thirdStackLabel.text = thirdLabelTextValue
+            fourthStackLabel.text = fourthLabelTextValue
             stackSizeField.text = stackSizeFieldTextValue.plus(stack.size.toString())
-    //        stackField.text = stackFieldTextValue.plus(stack.toString().substring(1, stack.toString().length - 1))
-            resultLabel.text = resultFieldTextValue.plus(result.toString())
+            resultLabel.text = resultFieldTextValue.plus(round(result))
             inputField.text = inputFieldTextValue.plus(input)
         }
     }

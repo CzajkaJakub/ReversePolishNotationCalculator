@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayout"
+    android:id="@+id/calculatorBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalculatorView">
@@ -42,25 +42,25 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/first"
+            android:id="@+id/firstStackLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/firstRowStack" />
 
         <TextView
-            android:id="@+id/second"
+            android:id="@+id/secondStackLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/secondRowStack" />
 
         <TextView
-            android:id="@+id/third"
+            android:id="@+id/thirdStackLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/thirdRowStack" />
 
         <TextView
-            android:id="@+id/fourth"
+            android:id="@+id/fourthStackLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fourthRowStack" />
@@ -101,7 +101,6 @@
                     android:layout_height="match_parent"
                     android:layout_margin="6dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/black"
                     android:text="@string/ac"
                     app:backgroundTint="@null" />
 
