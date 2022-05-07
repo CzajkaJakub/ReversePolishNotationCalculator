@@ -12,7 +12,7 @@ import java.util.*
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class MainActivity : AppCompatActivity() {
+class CalculatorView : AppCompatActivity() {
 
     val tag = "StateChanged"
 
@@ -229,53 +229,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.i(tag, "onRestart")
 
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.i(tag, "onStart")
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.i(tag, "onResume")
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.i(tag, "onPause")
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i(tag, "onDestroy")
-
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        Log.i(tag, "onConfigurationChanged")
-
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        Log.i(tag, "onRestoreInstanceState")
-
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        Log.i(tag, "onSaveInstanceState")
-
-    }
 
 
 

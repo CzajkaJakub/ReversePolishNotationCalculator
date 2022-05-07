@@ -7,15 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <TextView
+        android:id="@+id/accuracyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="@string/accuracy_1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/accuracySlider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textColorPicker"
+        app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/backgroundColorPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="81dp"
+        android:layout_marginBottom="49dp"
         android:text="@string/change_background_color"
+        app:layout_constraintBottom_toTopOf="@+id/buttonsColorPicker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/backToMainButton" />
 
     <Button
         android:id="@+id/backToMainButton"
@@ -23,28 +38,41 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="11dp"
+        android:layout_marginBottom="23dp"
         android:text="@string/back_to_main"
+        app:layout_constraintBottom_toTopOf="@+id/backgroundColorPicker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonsColorPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="45dp"
-        android:text="@string/change_buttons_color"
-        app:layout_constraintBottom_toTopOf="@+id/textColorPicker"
-        app:layout_constraintEnd_toEndOf="@+id/textColorPicker" />
 
     <Button
         android:id="@+id/textColorPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
+        android:layout_marginStart="39dp"
         android:text="@string/change_text_color"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/buttonsColorPicker"
+        app:layout_constraintTop_toBottomOf="@+id/buttonsColorPicker" />
+
+    <SeekBar
+        android:id="@+id/accuracySlider"
+        android:layout_width="284dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="216dp"
+        android:max="5"
+        android:progress="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonsColorPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="69dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/change_buttons_color"
+        app:layout_constraintBottom_toTopOf="@+id/textColorPicker"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/backgroundColorPicker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
