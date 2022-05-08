@@ -25,14 +25,14 @@
             android:id="@+id/backToMainButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20px"
+            android:layout_margin="20dp"
             android:text="@string/back_to_main" />
 
         <TextView
             android:id="@+id/accuracyView"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:layout_margin="20px"
+            android:layout_margin="20dp"
             android:gravity="center_vertical"
             android:text="@string/accuracy_1"
             android:textAlignment="center"
@@ -44,36 +44,36 @@
             android:id="@+id/accuracySlider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20px"
-            android:max="5"
+            android:layout_margin="20dp"
+            android:max="4"
             android:progress="1" />
 
         <Button
             android:id="@+id/textColorPicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20px"
+            android:layout_margin="20dp"
             android:text="@string/change_text_color" />
 
         <Button
             android:id="@+id/backgroundColorPicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20px"
+            android:layout_margin="20dp"
             android:text="@string/change_background_color" />
 
         <Button
             android:id="@+id/buttonsColorPicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20px"
+            android:layout_margin="20dp"
             android:text="@string/change_buttons_color" />
 
         <Button
             android:id="@+id/defaultSettingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20px"
+            android:layout_margin="20dp"
             android:text="@string/default_settings" />
     </LinearLayout>
 

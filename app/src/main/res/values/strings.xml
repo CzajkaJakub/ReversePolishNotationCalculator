@@ -33,7 +33,8 @@
     <string name="back_to_main">Back to main</string>
     <string name="change_buttons_color">Change buttons color</string>
     <string name="change_text_color">Change text color</string>
-    <string name="accuracy_1">Accuracy : 1</string>
+    <string name="accuracy_1">Accuracy : 2</string>
     <string name="default_settings">Default settings</string>
     <string name="settingsString">settingsImg</string>
+    <string name="resultLabel">Result</string>
 </resources>

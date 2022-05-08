@@ -1,6 +1,7 @@
 package com.example.reversepolishnotationcalculator
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,8 +34,8 @@ class SettingsActivity : AppCompatActivity() {
 
         accuracySlider.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(bar: SeekBar?, value: Int, p2: Boolean) {
-                settings.accuracy = value
-                val newText = "Accuracy : $value"
+                settings.accuracy = value + 1
+                val newText = "Accuracy : ${settings.accuracy}"
                 accuracyView.text = newText
             }
             override fun onStartTrackingTouch(p0: SeekBar?) { accuracyView.visibility = TextView.VISIBLE}
@@ -50,11 +51,15 @@ class SettingsActivity : AppCompatActivity() {
     private fun setDefaultColors(settings: Settings) {
         settings.textColor = Color.WHITE
         settings.backgroundColor = Color.BLACK
-        settings.buttonColor = Color.BLUE
+        settings.buttonColor = Color.RED
     }
 
     private fun readSettingsFromFile(): Settings {
         val path = this.filesDir.toString().plus("/colors.json")
+        if(!File(path).exists()){
+            File(path).createNewFile()
+            return Settings(Color.BLACK, Color.RED, Color.WHITE, 2)
+        }
         return mapper.readValue(File(path))
     }
 
@@ -88,5 +93,6 @@ class SettingsActivity : AppCompatActivity() {
         fun paintText(element: TextView) = element.setTextColor(settings.textColor)
         buttons.forEach{paintButtons(it); paintText(it)}
         backgroundSettingsLayout.setBackgroundColor(settings.backgroundColor)
+        accuracyView.setTextColor(settings.textColor)
     }
 }

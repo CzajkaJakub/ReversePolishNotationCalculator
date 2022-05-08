@@ -1,6 +1,8 @@
 package com.example.reversepolishnotationcalculator
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -35,6 +37,9 @@ class CalculatorView : AppCompatActivity() {
 
     private fun readSettingsFromFile(): Settings {
         val path = this.filesDir.toString().plus("/colors.json")
+        if(!File(path).exists()){
+            return Settings(Color.BLACK, Color.RED, Color.WHITE, 2)
+        }
         return mapper.readValue(File(path))
     }
 
@@ -104,8 +109,13 @@ class CalculatorView : AppCompatActivity() {
             }
         }
         buttonSqrt.setOnClickListener{
-            result = sqrt(result)
-            reloadLabels(stack, result, input)
+            if(result < 0){
+                val rootError = "There is no root from a negative number"
+                inputField.text = rootError
+            } else {
+                result = sqrt(result)
+                reloadLabels(stack, result, input)
+            }
         }
         buttonSwap.setOnClickListener{
             try{
@@ -125,10 +135,16 @@ class CalculatorView : AppCompatActivity() {
             reloadLabels(stack, result, input)
         }
         buttonChangeCharacter.setOnClickListener{
-            val newValue = -stack[0]
-            stack.remove()
-            stack.add(0, newValue)
-            reloadLabels(stack, result, input)
+            try{
+                val newValue = -stack[0]
+                stack.remove()
+                stack.add(0, newValue)
+                reloadLabels(stack, result, input)
+            } catch (e: Exception){
+                val errorText = "Add some number to stack!"
+                inputField.text = errorText
+            }
+
         }
         buttonEnter.setOnClickListener{
             try{
