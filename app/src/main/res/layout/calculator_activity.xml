@@ -22,61 +22,108 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:layout_weight="2">
 
             <TextView
                 android:id="@+id/resultLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/resultLabel" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:height="50dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/resultLabel"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:typeface="serif" />
 
             <TextView
                 android:id="@+id/firstStackLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/firstRowStack" />
+                android:layout_height="30dp"
+                android:layout_below="@+id/resultLabel"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
+                android:text="@string/firstRowStack"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/secondStackLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/secondRowStack" />
+                android:layout_height="30dp"
+                android:layout_below="@+id/firstStackLabel"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
+                android:text="@string/secondRowStack"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/thirdStackLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/thirdRowStack" />
+                android:layout_height="30dp"
+                android:layout_below="@+id/secondStackLabel"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
+                android:text="@string/thirdRowStack"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/fourthStackLabel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/fourthRowStack" />
+                android:layout_height="30dp"
+                android:layout_below="@+id/thirdStackLabel"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center_vertical"
+                android:text="@string/fourthRowStack"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/fourthStackLabel"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/stackSizeField"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_gravity="center|center_horizontal|center_vertical"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="@string/stack_size"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic"
+                    android:typeface="serif" />
 
                 <TextView
                     android:id="@+id/inputField"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/input" />
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="@string/input"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic"
+                    android:typeface="serif" />
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
         <TableLayout
             android:layout_width="match_parent"
