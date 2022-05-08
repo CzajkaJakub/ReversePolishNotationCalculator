@@ -147,8 +147,12 @@ class CalculatorView : AppCompatActivity() {
         }
         buttonEnter.setOnClickListener{
             try{
-                val inputNumber = input.toDouble()
-                stack.add(inputNumber)
+                if(input == ""){
+                    stack.add(stack[0])
+                } else {
+                    val inputNumber = input.toDouble()
+                    stack.add(inputNumber)
+                }
             }catch (e: Exception){}
             finally { input = ""; reloadLabels(stack, result, input) }
         }
