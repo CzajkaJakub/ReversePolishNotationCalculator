@@ -50,14 +50,14 @@ class SettingsActivity : AppCompatActivity() {
     private fun setDefaultColors(settings: Settings) {
         settings.textColor = Color.WHITE
         settings.backgroundColor = Color.BLACK
-        settings.buttonColor = Color.RED
+        settings.buttonColor = Color.BLUE
     }
 
     private fun readSettingsFromFile(): Settings {
         val path = this.filesDir.toString().plus("/colors.json")
         if(!File(path).exists()){
             File(path).createNewFile()
-            return Settings(Color.BLACK, Color.RED, Color.WHITE, 2)
+            return Settings(Color.BLACK, Color.BLUE, Color.WHITE, 2)
         }
         return mapper.readValue(File(path))
     }

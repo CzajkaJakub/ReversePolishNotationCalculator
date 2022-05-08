@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ReversePolishNotationCalculator</string>
+    <string name="app_name">Reverse Polish Notation Calculator</string>
     <string name="_7">7</string>
     <string name="_4">4</string>
     <string name="_1">1</string>
@@ -9,9 +9,9 @@
     <string name="_2">2</string>
     <string name="_3">3</string>
     <string name="_0">0</string>
-    <string name="result">Result :</string>
-    <string name="stack_size">Stack size :</string>
-    <string name="input">Input:</string>
+    <string name="result">Result : </string>
+    <string name="stack_size">Stack size : </string>
+    <string name="input">Input : </string>
     <string name="ac">AC</string>
     <string name="swap">SWAP</string>
     <string name="drop">DROP</string>
@@ -36,5 +36,4 @@
     <string name="accuracy_1">Accuracy : 2</string>
     <string name="default_settings">Default settings</string>
     <string name="settingsString">settingsImg</string>
-    <string name="resultLabel">Result</string>
 </resources>

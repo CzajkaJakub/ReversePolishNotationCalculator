@@ -37,7 +37,7 @@ class CalculatorView : AppCompatActivity() {
     private fun readSettingsFromFile(): Settings {
         val path = this.filesDir.toString().plus("/colors.json")
         if(!File(path).exists()){
-            return Settings(Color.BLACK, Color.RED, Color.WHITE, 2)
+            return Settings(Color.BLACK, Color.BLUE, Color.WHITE, 2)
         }
         return mapper.readValue(File(path))
     }

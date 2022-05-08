@@ -37,7 +37,7 @@
                 android:layout_marginTop="0dp"
                 android:height="50dp"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="@string/resultLabel"
+                android:text="@string/result"
                 android:textSize="20sp"
                 android:textStyle="bold|italic"
                 android:typeface="serif" />
@@ -134,7 +134,7 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:gravity="center">
 
                 <Button
@@ -156,19 +156,18 @@
                     android:text="@string/drop"
                     app:backgroundTint="@null" />
 
-                <ImageButton
-                    android:id="@+id/settingsButton"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:backgroundTint="#00FFFFFF"
-                    android:contentDescription="@string/settingsString"
-                    app:srcCompat="@mipmap/settings_icon_foreground" />
+                <Button
+                    android:id="@+id/buttonEnter"
+                    style="@style/buttonStyle"
+                    android:text="@string/enterButton"
+                    app:backgroundTint="@null" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/button7"
@@ -205,7 +204,8 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/button4"
@@ -242,7 +242,8 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/button1"
@@ -279,7 +280,8 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="207dp"
-                android:layout_weight="3">
+                android:layout_weight="1"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/button0"
@@ -294,16 +296,18 @@
                     app:backgroundTint="@null" />
 
                 <Button
-                    android:id="@+id/buttonEnter"
-                    style="@style/buttonStyle"
-                    android:text="@string/enterButton"
-                    app:backgroundTint="@null" />
-
-                <Button
                     android:id="@+id/buttonPlus"
                     style="@style/buttonStyle"
                     android:text="@string/addButton"
                     app:backgroundTint="@null" />
+
+                <ImageButton
+                    android:id="@+id/settingsButton"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:contentDescription="@string/settingsString"
+                    app:srcCompat="@mipmap/settings_icon_foreground" />
 
             </TableRow>
 
