@@ -30,14 +30,14 @@ class CalculatorView : AppCompatActivity() {
         setContentView(R.layout.calculator_activity)
         setButtonsListeners()
         setBackgroundColor(settings!!.backgroundColor)
-        setButtonColor(settings!!.buttonColor)
+        setButtonColor(settings!!)
         changeTextColor(settings!!.textColor)
     }
 
     private fun readSettingsFromFile(): Settings {
         val path = this.filesDir.toString().plus("/colors.json")
         if(!File(path).exists()){
-            return Settings(Color.BLACK, Color.BLUE, Color.WHITE, 2)
+            return Settings(Color.BLACK, Color.GRAY, -101596, -1124139008, Color.WHITE, 2)
         }
         return mapper.readValue(File(path))
     }
@@ -145,6 +145,12 @@ class CalculatorView : AppCompatActivity() {
             }
 
         }
+        buttonUndo.setOnClickListener{
+            if(input.isNotEmpty()){
+                input = input.dropLast(1)
+                reloadLabels(stack, result, input)
+            }
+        }
         buttonEnter.setOnClickListener{
             try{
                 if(input == ""){
@@ -165,24 +171,30 @@ class CalculatorView : AppCompatActivity() {
     private fun changeTextColor(textColor: Int) {
         val elements: List<TextView> = listOf<TextView>(buttonAc, buttonSwap, buttonDrop, button0, button1, button2, button3, inputField,
                                               button4, button5, button6, button7, button8, button9, buttonDiv, resultLabel,
-                                              buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter,
+                                              buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter, resultLab,
                                               buttonSqrt, buttonPower, buttonMultiplication, firstStackLabel, secondStackLabel, thirdStackLabel, fourthStackLabel, stackSizeField)
         fun colorElement(element: TextView) = element.setTextColor(textColor)
         elements.forEach{colorElement(it)}
     }
 
-    private fun setButtonColor(buttonColor: Int) {
-        val elements: List<Button> = listOf<Button>(buttonAc, buttonSwap, buttonDrop, button0, button1, button2, button3,
-            button4, button5, button6, button7, button8, button9, buttonDiv,
+    private fun setButtonColor(buttonColor: Settings) {
+
+        val numbersButtons: List<Button> = listOf<Button>(button0, button1, button2, button3,
+            button4, button5, button6, button7, button8, button9)
+
+        val operationButtons: List<Button> = listOf<Button>(buttonSwap, buttonDrop, buttonDiv,
             buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter,
-            buttonSqrt, buttonPower, buttonMultiplication)
-        fun colorElement(element: Button) = element.setBackgroundColor(buttonColor)
-        elements.forEach{colorElement(it)}
+            buttonSqrt, buttonPower, buttonMultiplication, buttonUndo)
+
+        buttonAc.setBackgroundColor(buttonColor.buttonAc)
+        numbersButtons.forEach{it.setBackgroundColor(buttonColor.buttonsNumbers)}
+        operationButtons.forEach{it.setBackgroundColor(buttonColor.buttonsOperations)}
+
     }
 
     private fun reloadLabels(stack: LinkedList<Double>, result: Double, input: String) {
         var (firstLabelTextValue, secondLabelTextValue, thirdLabelTextValue, fourthLabelTextValue) = listOf("1: ", "2: ", "3: ", "4: ")
-        val (resultFieldTextValue, inputFieldTextValue, stackSizeFieldTextValue) = listOf("Result : ", "Input : ", "Stack size : ")
+        val (resultFieldTextValue, inputFieldTextValue, stackSizeFieldTextValue) = listOf("", "Input : ", "Stack size : ")
         fun round(x : Double) = ((x * (10.0).pow(settings!!.accuracy.toDouble())).roundToInt()) / ((10.0).pow(settings!!.accuracy.toDouble()))
         try {
             firstLabelTextValue += round(stack[0]).toString()

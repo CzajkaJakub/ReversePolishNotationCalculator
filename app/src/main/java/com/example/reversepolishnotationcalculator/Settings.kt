@@ -9,14 +9,22 @@ data class Settings(
     @JsonProperty("backgroundColor")
     var backgroundColor: Int,
 
-    @JsonProperty("buttonColor")
-    var buttonColor: Int,
+    @JsonProperty("buttonsNumbers")
+    var buttonsNumbers: Int,
+
+    @JsonProperty("buttonsOperations")
+    var buttonsOperations: Int,
+
+    @JsonProperty("buttonAc")
+    var buttonAc: Int,
 
     @JsonProperty("textColor")
     var textColor: Int,
 
     @JsonProperty("accuracy")
     var accuracy:Int)
+
+
 
 
 

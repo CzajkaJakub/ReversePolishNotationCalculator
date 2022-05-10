@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.SeekBar
 import android.widget.TextView
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -27,7 +28,9 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setButtonsListeners(settings: Settings) {
         backgroundColorPicker.setOnClickListener{ openColorPicker(ColorType.Background, settings) }
-        buttonsColorPicker.setOnClickListener{ openColorPicker(ColorType.Buttons, settings) }
+        arithmeticButtonsColorPicker.setOnClickListener{ openColorPicker(ColorType.ButtonsOperations, settings) }
+        acButtonColorPicker.setOnClickListener{ openColorPicker(ColorType.ButtonAc, settings) }
+        numbersButtonsColorPicker.setOnClickListener{ openColorPicker(ColorType.ButtonsNumbers, settings) }
         textColorPicker.setOnClickListener{ openColorPicker(ColorType.Text, settings) }
         defaultSettingsButton.setOnClickListener{ setDefaultColors(settings); loadColors(settings)}
 
@@ -37,8 +40,8 @@ class SettingsActivity : AppCompatActivity() {
                 val newText = "Accuracy : ${settings.accuracy}"
                 accuracyView.text = newText
             }
-            override fun onStartTrackingTouch(p0: SeekBar?) { accuracyView.visibility = TextView.VISIBLE}
-            override fun onStopTrackingTouch(p0: SeekBar?) { accuracyView.visibility = TextView.INVISIBLE }
+            override fun onStartTrackingTouch(p0: SeekBar?) { accuracyView.setTextColor(-788529153)}
+            override fun onStopTrackingTouch(p0: SeekBar?) { accuracyView.setTextColor(805306367) }
         })
 
         backToMainButton.setOnClickListener{
@@ -50,14 +53,17 @@ class SettingsActivity : AppCompatActivity() {
     private fun setDefaultColors(settings: Settings) {
         settings.textColor = Color.WHITE
         settings.backgroundColor = Color.BLACK
-        settings.buttonColor = Color.BLUE
+        settings.buttonsNumbers = Color.GRAY
+        settings.buttonAc = -1124139008
+        settings.buttonsOperations = -101596
+
     }
 
     private fun readSettingsFromFile(): Settings {
         val path = this.filesDir.toString().plus("/colors.json")
         if(!File(path).exists()){
             File(path).createNewFile()
-            return Settings(Color.BLACK, Color.BLUE, Color.WHITE, 2)
+            return Settings(Color.BLACK, Color.GRAY, -101596, -1124139008, Color.WHITE, 2)
         }
         return mapper.readValue(File(path))
     }
@@ -73,10 +79,13 @@ class SettingsActivity : AppCompatActivity() {
             override fun onCancel(dialog: AmbilWarnaDialog?) { return }
 
             override fun onOk(dialog: AmbilWarnaDialog?, color: Int) {
+                Log.i("color", color.toString())
                 when(type){
-                    ColorType.Buttons -> settings.buttonColor = color
                     ColorType.Background -> settings.backgroundColor = color
                     ColorType.Text -> settings.textColor = color
+                    ColorType.ButtonsNumbers -> settings.buttonsNumbers = color
+                    ColorType.ButtonsOperations -> settings.buttonsOperations = color
+                    ColorType.ButtonAc -> settings.buttonAc = color
                 }
                 loadColors(settings)
             }
@@ -87,11 +96,12 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun loadColors(settings: Settings) {
-        val buttons: List<TextView> = listOf<TextView>(backToMainButton, backgroundColorPicker, textColorPicker, buttonsColorPicker, defaultSettingsButton)
-        fun paintButtons(element: TextView) = element.setBackgroundColor(settings.buttonColor)
+        val buttons: List<TextView> = listOf<TextView>(backToMainButton, backgroundColorPicker, textColorPicker, arithmeticButtonsColorPicker,
+            defaultSettingsButton, numbersButtonsColorPicker, acButtonColorPicker)
+        fun paintButtons(element: TextView) = element.setBackgroundColor(settings.buttonsNumbers)
         fun paintText(element: TextView) = element.setTextColor(settings.textColor)
         buttons.forEach{paintButtons(it); paintText(it)}
         backgroundSettingsLayout.setBackgroundColor(settings.backgroundColor)
-        accuracyView.setTextColor(settings.textColor)
+        accuracyView.setTextColor(805306367)
     }
 }

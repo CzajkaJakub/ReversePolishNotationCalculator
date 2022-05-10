@@ -1,5 +1,5 @@
 package com.example.reversepolishnotationcalculator
 
 enum class ColorType {
-    Buttons, Background, Text
+    ButtonsNumbers, ButtonsOperations, ButtonAc, Background, Text
 }

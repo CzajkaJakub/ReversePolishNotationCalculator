@@ -25,26 +25,26 @@
             android:id="@+id/backToMainButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/back_to_main" />
 
         <TextView
             android:id="@+id/accuracyView"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:layout_margin="20dp"
-            android:gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:gravity="center"
             android:text="@string/accuracy_1"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <SeekBar
             android:id="@+id/accuracySlider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:max="4"
             android:progress="1" />
 
@@ -52,28 +52,42 @@
             android:id="@+id/textColorPicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/change_text_color" />
 
         <Button
             android:id="@+id/backgroundColorPicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/change_background_color" />
 
         <Button
-            android:id="@+id/buttonsColorPicker"
+            android:id="@+id/arithmeticButtonsColorPicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/change_buttons_color" />
+            android:layout_margin="10dp"
+            android:text="@string/arithmetic_buttons_colors" />
+
+        <Button
+            android:id="@+id/numbersButtonsColorPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/numbers_button_colors" />
+
+        <Button
+            android:id="@+id/acButtonColorPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/change_ac_button_color" />
 
         <Button
             android:id="@+id/defaultSettingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/default_settings" />
     </LinearLayout>
 
