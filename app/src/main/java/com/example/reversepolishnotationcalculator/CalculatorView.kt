@@ -86,10 +86,13 @@ class CalculatorView : AppCompatActivity() {
         }
         buttonDiv.setOnClickListener{
             val dod = stack.peekFirst()
-            if( dod != null) {
+            if( dod != null && dod != 0.0) {
                 result /= dod
                 stack.remove()
                 reloadLabels(stack, result, input)
+            } else if(dod == 0.0){
+                val rootError = "You can't div by 0!"
+                inputField.text = rootError
             }
         }
         buttonDrop.setOnClickListener{
