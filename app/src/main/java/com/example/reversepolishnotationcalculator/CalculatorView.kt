@@ -170,7 +170,7 @@ class CalculatorView : AppCompatActivity() {
 
     private fun changeTextColor(textColor: Int) {
         val elements: List<TextView> = listOf<TextView>(buttonAc, buttonSwap, buttonDrop, button0, button1, button2, button3, inputField,
-                                              button4, button5, button6, button7, button8, button9, buttonDiv, resultLabel,
+                                              button4, button5, button6, button7, button8, button9, buttonDiv, resultLabel, buttonUndo,
                                               buttonDot, buttonChangeCharacter, buttonMinus, buttonPlus, buttonEnter, resultLab,
                                               buttonSqrt, buttonPower, buttonMultiplication, firstStackLabel, secondStackLabel, thirdStackLabel, fourthStackLabel, stackSizeField)
         fun colorElement(element: TextView) = element.setTextColor(textColor)
