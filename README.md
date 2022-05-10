@@ -17,9 +17,7 @@ The goal was to write a simple calculator for Android task in RPN (Reverse Polis
 - Jackson.
 
 <p align="center">
-<img width="416" alt="Screenshot 2022-05-08 at 20 44 10" src="https://user-images.githubusercontent.com/81914576/167635274-538f83fb-04ff-407d-9068-30bd413b5a83.png">
-<img width="416" alt="Screenshot 2022-05-08 at 20 45 37" src="https://user-images.githubusercontent.com/81914576/167634332-68e0cf0c-a787-4397-a6f9-392d3c40c41d.png">
+<img width="416" alt="Screenshot 2022-05-08 at 20 45 37" src="https://user-images.githubusercontent.com/81914576/167705981-1bd2068c-578e-44d1-a5c9-b48a2ba28786.jpg">
+<img width="416" alt="Screenshot 2022-05-08 at 20 45 37" src="https://user-images.githubusercontent.com/81914576/167705978-9ec9aee2-abca-4eaf-ab09-d370e15556a1.jpg">
+<img width="416" alt="Screenshot 2022-05-08 at 20 44 10" src="https://user-images.githubusercontent.com/81914576/167705974-e4a6316c-40e6-4c90-bc46-6e4e88a1cd79.jpg">
 </p>
-
-
-
